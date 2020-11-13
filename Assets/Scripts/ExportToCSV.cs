@@ -10,6 +10,7 @@ using TMPro;
 public class ExportToCSV : MonoBehaviour
 {
     private List<string[]> rowData = new List<string[]>();
+
     [SerializeField]
     public ScoutingDataList scoutingDataList = new ScoutingDataList();
     public NotificationSystem notificationSystem;
