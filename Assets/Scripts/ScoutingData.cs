@@ -8,12 +8,13 @@ public class ScoutingData
     public string name;
     public string matchNumber;
     public string teamName;
+    public string initiationLine;
+    public string autonomousUpperCount;
     public string autonomousInnerCount;
-    public string autonomousInnerInnerCount;
-    public string autonomousOuterCount;
+    public string autonomousLowerCount;
+    public string teleOpUpperCount;
     public string teleOpInnerCount;
-    public string teleOpInnerInnerCount;
-    public string teleOpOuterCount;
+    public string teleOpLowerCount;
     public string drivingEffectiveness;
     public string defenseEffectiveness;
     public string additionalNotes;

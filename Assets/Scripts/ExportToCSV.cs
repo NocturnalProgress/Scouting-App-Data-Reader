@@ -13,14 +13,15 @@ public class ExportToCSV : MonoBehaviour
 
     [SerializeField]
     public ScoutingDataList scoutingDataList = new ScoutingDataList();
+
     public NotificationSystem notificationSystem;
 
     private string importDataPath;
     private TextAsset jsonFile;
 
-    string[] rowDataTemp = new string[12];
+    private string[] rowDataTemp = new string[12];
 
-    void Start()
+    private void Start()
     {
         CheckFolderExistence("/ImportData");
         CheckFolderExistence("/Spreadsheets");
@@ -55,19 +56,20 @@ public class ExportToCSV : MonoBehaviour
 
                 foreach (ScoutingData scoutingData in scoutingDataList.ScoutingData)
                 {
-                    rowDataTemp = new string[12];
+                    rowDataTemp = new string[13];
                     rowDataTemp[0] = scoutingDataList.ScoutingData[x].name.ToString();
                     rowDataTemp[1] = scoutingData.matchNumber;
                     rowDataTemp[2] = scoutingData.teamName;
-                    rowDataTemp[3] = scoutingData.autonomousInnerCount;
-                    rowDataTemp[4] = scoutingData.autonomousInnerInnerCount;
-                    rowDataTemp[5] = scoutingData.autonomousOuterCount;
-                    rowDataTemp[6] = scoutingData.teleOpInnerCount;
-                    rowDataTemp[7] = scoutingData.teleOpInnerInnerCount;
-                    rowDataTemp[8] = scoutingData.teleOpOuterCount;
-                    rowDataTemp[9] = scoutingData.drivingEffectiveness;
-                    rowDataTemp[10] = scoutingData.defenseEffectiveness;
-                    rowDataTemp[11] = scoutingData.additionalNotes;
+                    rowDataTemp[3] = scoutingData.initiationLine;
+                    rowDataTemp[4] = scoutingData.autonomousUpperCount;
+                    rowDataTemp[5] = scoutingData.autonomousInnerCount;
+                    rowDataTemp[6] = scoutingData.autonomousLowerCount;
+                    rowDataTemp[7] = scoutingData.teleOpUpperCount;
+                    rowDataTemp[8] = scoutingData.teleOpInnerCount;
+                    rowDataTemp[9] = scoutingData.teleOpLowerCount;
+                    rowDataTemp[10] = scoutingData.drivingEffectiveness;
+                    rowDataTemp[11] = scoutingData.defenseEffectiveness;
+                    rowDataTemp[12] = scoutingData.additionalNotes;
                     rowData.Add(rowDataTemp);
                     // Debug.Log("Test: " + scoutingDataList.ScoutingData[x].name.ToString());
                     x++;
@@ -96,7 +98,6 @@ public class ExportToCSV : MonoBehaviour
         for (int index = 0; index < length; index++)
             sb.AppendLine(string.Join(delimiter, output[index]));
 
-
         // Debug.Log("Exporting to CSV!");
 
         outStream.WriteLine(sb);
@@ -115,22 +116,22 @@ public class ExportToCSV : MonoBehaviour
         }
     }
 
-
     private void AddTitles() // Add titles to the CSV file
     {
-        rowDataTemp = new string[12];
+        rowDataTemp = new string[13];
         rowDataTemp[0] = "Name";
         rowDataTemp[1] = "Match Number";
         rowDataTemp[2] = "Team Number";
-        rowDataTemp[3] = "Autonomous Inner Count";
-        rowDataTemp[4] = "Autonomous Inner Inner Count";
-        rowDataTemp[5] = "Autonomous Outer Count";
-        rowDataTemp[6] = "TeleOp Inner Count";
-        rowDataTemp[7] = "TeleOp Inner Inner Count";
-        rowDataTemp[8] = "TeleOp Outer Count";
-        rowDataTemp[9] = "Driving Effectiveness";
-        rowDataTemp[10] = "Defense Effectiveness";
-        rowDataTemp[11] = "Additional Notes";
+        rowDataTemp[3] = "Initiation Line";
+        rowDataTemp[4] = "Autonomous Upper Count";
+        rowDataTemp[5] = "Autonomous Inner Inner Count";
+        rowDataTemp[6] = "Autonomous Lower Count";
+        rowDataTemp[7] = "TeleOp Upper Count";
+        rowDataTemp[8] = "TeleOp Inner Inner Count";
+        rowDataTemp[9] = "TeleOp Lower Count";
+        rowDataTemp[10] = "Driving Effectiveness";
+        rowDataTemp[11] = "Defense Effectiveness";
+        rowDataTemp[12] = "Additional Notes";
         rowData.Add(rowDataTemp);
     }
 
