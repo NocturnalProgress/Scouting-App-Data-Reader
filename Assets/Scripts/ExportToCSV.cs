@@ -37,7 +37,7 @@ public class ExportToCSV : MonoBehaviour
 
         if (!File.Exists(Application.persistentDataPath + "/Spreadsheets/" + "Saved_data.csv")) //Include titles if Saved_data.csv does not exist
         {
-            AddTitles();
+            // AddTitles();
         }
         else
         {
@@ -137,10 +137,11 @@ public class ExportToCSV : MonoBehaviour
 
     public void OpenInFiles(string folderPathToOpen)
     {
+        Debug.Log("Opening in Finder");
         string folderPath = Application.persistentDataPath + folderPathToOpen;
         // System.Diagnostics.Process.Start("explorer.exe", "/select," + folderPathToOpen);
         // System.Diagnostics.Process.Start("explorer.exe", "/select," + Application.persistentDataPath);
 
-        Application.OpenURL("file://" + folderPath);
+        Application.OpenURL("file:\\" + folderPath);
     }
 }
