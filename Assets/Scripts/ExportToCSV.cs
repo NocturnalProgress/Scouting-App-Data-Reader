@@ -143,7 +143,7 @@ public class ExportToCSV : MonoBehaviour
         string folderPath = Application.persistentDataPath + folderPathToOpen;
         // System.Diagnostics.Process.Start("explorer.exe", "/select," + folderPathToOpen);
         // System.Diagnostics.Process.Start("explorer.exe", "/select," + Application.persistentDataPath);
-
-        Application.OpenURL("file:\\" + folderPath);
+        // Debug.Log(folderPath);
+        Application.OpenURL("file://" + folderPath);
     }
 }
