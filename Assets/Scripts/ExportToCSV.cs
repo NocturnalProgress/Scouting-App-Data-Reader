@@ -44,8 +44,9 @@ public class ExportToCSV : MonoBehaviour
             // Debug.Log("File exists.. not adding titles");
         }
 
-        foreach (string filePath in Directory.GetFiles(importDataPath))
+        foreach (string filePath in Directory.GetFiles(importDataPath,  "*.json"))
         {
+            // Debug.Log($"<color='cyan'>{filePath}</color>");
             jsonFile = new TextAsset(File.ReadAllText(filePath));
 
             if (jsonFile != null)
@@ -137,7 +138,8 @@ public class ExportToCSV : MonoBehaviour
 
     public void OpenInFiles(string folderPathToOpen)
     {
-        Debug.Log("Opening in Finder");
+
+        // Debug.Log("Opening in");
         string folderPath = Application.persistentDataPath + folderPathToOpen;
         // System.Diagnostics.Process.Start("explorer.exe", "/select," + folderPathToOpen);
         // System.Diagnostics.Process.Start("explorer.exe", "/select," + Application.persistentDataPath);
